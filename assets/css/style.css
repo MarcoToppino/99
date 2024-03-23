@@ -15,3 +15,39 @@ main {
 footer {
     background-color: red;
 }
+
+h1, h2 {
+    text-align: center;
+}
+.cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.cards > div {
+    border: solid 2px black;
+    border-radius: 5%;
+    padding: 2rem;
+    font-size: x-large;
+}
+
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.controls > button {
+    font-size: large;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+
+.counters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}

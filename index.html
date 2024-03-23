@@ -18,12 +18,56 @@
 </head>
 <body>
     <header>
+        <!--Buttons to register your name, make a new game-->
         HEADER
     </header>
     <main>
-        MAIN
+        <h1>PLAY 99 CARD GAME!</h1>
+        <div id="opponent">
+            <h2>CPU PLAYER</h2>
+            <!--3 cards (covered) of the opponent, 1 displayed when the opponent deals-->
+            <div class="cards">
+                <div class="opponentCards" id="OpponentCard1">O 1</div>
+                <div class="opponentCards" id="OpponentCard2">O 2</div>
+                <div class="opponentCards" id="OpponentCard3">O 3</div>
+            </div>
+        </div>
+        <div id="game">
+            <!--3 areas on the same line:
+            - cards covered "deck", empty when finished
+            - last card played
+            - Total of points from the played cards
+            - message "you win/you lose" visible at the end of the game (99+)
+        -->
+        <h2 class="gameArea" id="message">You Win/Lose</h2>
+        <div class="cards">
+                <div class="gameArea" id="deck">D 1</div>
+                <div class="gameArea" id="played">G 1</div>
+                <div class="gameArea" id="points">Po 1</div>
+            </div>
+        </div>
+        <div id="player">
+            <h2>PLAYER ONE</h2>
+            <!--3 cards (visible) that the player can choose, when played, the card goes on the top of played and a new one appears from the "deck"-->
+            <div class="cards">
+                <div class="playerCards" id="playerCard1">P 1</div>
+                <div class="playerCards" id="playerCard2">P 2</div>
+                <div class="playerCards" id="playerCard3">P 3</div>
+            </div>
+            <div class="controls">
+                <button class="button" id="playerCard1">Play 1</button>
+                <button class="button" id="playerCard1">Play 2</button>
+                <button class="button" id="playerCard1">Play 3</button>
+            </div>
+        </div>
+        <div class="counters">
+            <!--matches won and matches lost-->
+            <div class="counter" id="win">WON GAMES=1</div>
+            <div class="counter" id="lost">LOST GAMES=1</div>
+        </div>
     </main>
     <footer>
+        <!--Rules of the game (value of the cards)-->
         FOOTER
     </footer>
     <!--Script Link-->
