@@ -278,17 +278,14 @@ function drawCard() {
         card = cards + i
         let value = document.getElementById(card).innerHTML
         if (value === " ") {
-            alert("carta vuota " + card)
             // Creates a random numbers between 1 and the deck total cards
             let num = Math.floor(Math.random() * deck.length) + 1;
             // takes the correspondent card
             let newCard = deck[num];
-            alert("New card " + newCard)
             //writes it in the empty place
             document.getElementById(card).innerHTML = newCard;
             // eliminates from the array
             deck.splice(num,1);
-            alert("New Deck " + deck.length)
         }
     }
 }
