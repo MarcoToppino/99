@@ -23,11 +23,6 @@
  * calls for preparing the game
 */
 document.addEventListener("DOMContentLoaded", function() {
-    let buttons = document.getElementsByTagName("button");
-    for (let button of buttons) {
-        button.addEventListener("click", function() {
-        });
-    }
     //global variables declaration
     let deck //array of cards (deck)
     let pl  //player (CPU or P1)
@@ -35,7 +30,15 @@ document.addEventListener("DOMContentLoaded", function() {
     let points = 0 //points according the rules for the chosen card
     let chosenCard //chosen and played card
     let endGame = false //boolean for the end of the game
+
     prepareGame()
+
+    let buttons = document.getElementsByTagName("button");
+    for (let button of buttons) {
+        button.addEventListener("click", mainGame, this.id)
+        //when button clicked, play the game passing the button id
+    }
+
     mainGame()
 });
 
@@ -120,9 +123,12 @@ function playerColor() {
 
 function mainGame() {
     if (pl =="CPU") {
+        alert("CPU is playing now!")
         cpuGame();
     } else {
-        playerGame();
+        alert("Player One is playing now!")
+        clicked = this.id
+        playerGame(clicked);
     }
     getPoints()
     moveChosenCard()
@@ -141,7 +147,7 @@ function mainGame() {
 
 
 
-/**Game Routine for the CPU
+/**Game Routine for the CPU only
  * waits 5000 milliseconds "thinking")
  * takes a random card from the 3 available
  * and eliminates it
@@ -159,12 +165,18 @@ function cpuGame() {
 }
 
 
-/**Game routine for the player P1
+/**Game routine for the player P1 only
  * takes the card chosen (button click)
  * and eliminates it
+ * then gets back to the mainGame
  */
-function playerGame() {
-
+function playerGame(clicked) {
+    let buttonID = clicked
+    alert(buttonID)
+    let num = buttonID.slice(-1)
+    chosenCard = document.getElementById("playerCard" + num).innerHTML
+    alert(chosenCard)
+    document.getElementById("playerCard" + num).innerHTML = " "
 }
 
 /**Calculates the points according to the rules of the game */
@@ -233,20 +245,21 @@ function calculateTotalPoints() {
 /**Checks if the total points are 99+ or if the deck is empty */
 function checkEndGame () {
     if (parseInt(totalPoints) > 99) {
-        endGame = true
+        endGame1 = true
         alert("99+ Total Points "+ parseInt(totalPoints))
     } else {
-        endGame = false
+        endGame1 = false
         alert("99- Total Points "+ totalPoints)
     }
     if (deck.length == 0) {
-        endGame = true
+        endGame2 = true
         alert("deck 0")
     } else {
-        endGame = false
+        endGame2 = false
         alert("deck ok "+ deck.length)
     }
-}
+    endGame = endGame1 || endGame2
+    }
 /**Changes the player, updates the background of the title and calls for a new mainGame routine */
 function changePlayer() {
     alert("actual Player" + pl)
