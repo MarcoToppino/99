@@ -1,9 +1,8 @@
 /**After the loading of the page:
  * add event listeners to the buttons (click) for the player Area
  * Load all cards in the Deck (1-2-3-4-5-6-7-8-9-10-J-Q-K) x 4 = prepareGame()
- * Distribute 3 random cards to the player and to the CPU
+ * Distribute 3 random cards to the player and to the CPU = distributeCardsAll()
  * Every time a card is distributed, eliminate from the deck
- * Show the top card (first) of the deck
  * Random choose for who start first (Player or CPU)
  * CPU play = random choice between the cards
  * Player play = click on the respectie button
@@ -29,11 +28,25 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     prepareGame()
 });
-// Prepare the game loading all cards in an array (4 full sets) as a deck, then calls for taking out three random cards and distribute to player and CPU
+
+/** Prepare the game loading all cards in an array (4 full sets) as a deck
+ * calls for taking out three random cards and distribute to player and CPU
+ * resets the points
+ * places two empty cardson the deck (just for space) and the played
+ * randomly chooses if it is CPU or player and changes the background of the area
+ * */ 
 function prepareGame(){
     var deck = ["1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K"]
     distributeCardsAll(deck)
+    var points = "0"
+    document.getElementById("points").innerHTML = points
+    document.getElementById("deck").innerHTML = " "
+    document.getElementById("played").innerHTML = " "
+    var pl = choosePlayer()
+    console.log(pl)
 }
+
+
 //takes three random cards and distribute to CPU and Player
 function distributeCardsAll (deck) {
     //cycle through the 3 CPU cards and:
@@ -58,5 +71,20 @@ function distributeCardsAll (deck) {
         // eliminates from the array
         deck.splice(num,1)
     }
-
+    //show the first card of the deck
+    document.getElementById("")
+}
+/**Generate a random number
+ * if it is > 0,5 assign the CPU as first player
+ * returns the PLayer (CPU or P1)
+ */
+function choosePlayer(){
+    let num = Math.floor(Math.random()*2)
+    console.log(num)
+    if (num === 0 ) {
+        pl = "CPU"
+    } else {
+        pl = "P1"
+    }
+    return pl
 }
