@@ -25,6 +25,8 @@ let totalPoints = 0; //total points
 let points = 0; //points according the rules for the chosen card
 let chosenCard; //chosen and played card
 let endGame = false; //boolean for the end of the game
+let won = 0
+let lost = 0
 
 /**NORMAL SEQUENCE OF THE GAME */
 prepareGame()
@@ -46,13 +48,16 @@ function prepareGame() {
         //when button clicked, play the game passing the button id
         button.addEventListener("click", mainGame, this.id)
     }
+    deck = []
     deck = ["1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K"];
     distributeCardsAll()
+    points=0
+    totalPoints=0
     document.getElementById("points").innerHTML = "0";
     document.getElementById("deck").innerHTML = "D";
     document.getElementById("played").innerHTML = "P";
-    document.getElementById("won").innerHTML = "WON GAMES = 0"
-    document.getElementById("lost").innerHTML = "LOST GAMES = 0"
+    document.getElementById("won").innerHTML = "WON GAMES = " + won
+    document.getElementById("lost").innerHTML = "LOST GAMES = " + lost
     choosePlayer()
     playerColor()
 }
@@ -116,7 +121,7 @@ function playerColor() {
  * adds the points to the total according the rules
  * moves the card on the last played pile
  * check the points total if it is 99+ or if there are no more cards in the deck
- * if yes: display message, update counters, ask for a new game
+ * if yes: display message, update counters, go for a new game
  * if no: takes a new card from the deck (checking if there are cards available)
  * changes player and start again with the new player
 */
@@ -136,7 +141,15 @@ function mainGame() {
         drawCard()
         changePlayer()
     } else {
-        alert("Exit game")
+        //check the player to understand who lost, updae the counters
+        if (pl === "CPU") {
+            alert("You Won the Game!")
+            won = parseInt(won)+1
+        } else {
+            alert("You lost the game!")
+            lost=parseInt(lost)+1
+        }
+        prepareGame()
     }
 }
 
@@ -244,6 +257,7 @@ function checkEndGame () {
     }
     endGame = endGame1 || endGame2
     }
+
 /**Changes the player, updates the background of the title and calls for a new mainGame routine if player is CPU*/
 function changePlayer() {
     if (pl === "CPU") {
