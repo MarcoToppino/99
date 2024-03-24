@@ -56,8 +56,8 @@ function prepareGame() {
     document.getElementById("points").innerHTML = "0";
     document.getElementById("deck").innerHTML = "D";
     document.getElementById("played").innerHTML = "P";
-    document.getElementById("won").innerHTML = "WON GAMES = " + won;
-    document.getElementById("lost").innerHTML = "LOST GAMES = " + lost;
+    document.getElementById("won").innerHTML = "WON = " + won;
+    document.getElementById("lost").innerHTML = "LOST = " + lost;
     choosePlayer();
     playerColor();
 }
