@@ -101,8 +101,10 @@ function choosePlayer(){
 function playerColor() {
     if (pl =="CPU") {
         document.getElementById("opponentTitle").style.backgroundColor="yellow";
+        document.getElementById("playerTitle").style.backgroundColor="green";
     } else {
         document.getElementById("playerTitle").style.backgroundColor="yellow";
+        document.getElementById("opponentTitle").style.backgroundColor="green";
     }
 }
 
@@ -126,13 +128,15 @@ function mainGame() {
     moveChosenCard()
     calculateTotalPoints()
     checkEndGame()
-    if (endGame === false) {
+    alert("EndGame = " + endGame)
+    if (endGame == false) {
+        alert("Draw new card")
         drawCard()
+        alert("Changing Player")
         changePlayer()
     } else {
-
+        alert("Exit game")
     }
-    changePlayer()
 }
 
 
@@ -218,8 +222,6 @@ function moveChosenCard () {
  * displays the total Points in the correct area
  */
 function calculateTotalPoints() {
-    console.log(totalPoints)
-    console.log(points)
     if (points == 99) {
         totalPoints = 99
     } else {
@@ -232,30 +234,61 @@ function calculateTotalPoints() {
 function checkEndGame () {
     if (parseInt(totalPoints) > 99) {
         endGame = true
+        alert("99+ Total Points "+ parseInt(totalPoints))
     } else {
         endGame = false
+        alert("99- Total Points "+ totalPoints)
     }
-    console.log(deck.length)
-    if (deck.length = 0) {
+    if (deck.length == 0) {
         endGame = true
+        alert("deck 0")
     } else {
         endGame = false
+        alert("deck ok "+ deck.length)
     }
-    console.log(endGame)
 }
 /**Changes the player, updates the background of the title and calls for a new mainGame routine */
 function changePlayer() {
+    alert("actual Player" + pl)
     if (pl === "CPU") {
         pl = "P1"
-
+        alert("new Player" + pl)
     } else {
         pl = "CPU"
+        alert("new Player" + pl)
     }
     playerColor()
-    mainGame()
 }
 
-
+/**Draws a new random card from the deck
+ * places it in the available (= empty) place (CPU or P1)
+ * takes it away from the deck
+ */
 function drawCard() {
-    
+    let cards
+    let card
+    //Checks wich player is playing
+    if (pl==="CPU") {
+        cards = "opponentCard"
+    } else {
+        cards = "playerCard"
+    }
+    //finds the empty card
+    for (let i = 1; i<4; i++) {
+        card = cards + i
+        let value = document.getElementById(card).innerHTML
+        if (value === " ") {
+            alert("carta vuota " + card)
+            // Creates a random numbers between 1 and the deck total cards
+            let num = Math.floor(Math.random() * deck.length) + 1;
+            // takes the correspondent card
+            let newCard = deck[num];
+            alert("New card " + newCard)
+            //writes it in the empty place
+            document.getElementById(card).innerHTML = newCard;
+            // eliminates from the array
+            deck.splice(num,1);
+            alert("New Deck " + deck.length)
+        }
+    }
 }
