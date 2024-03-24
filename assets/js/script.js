@@ -35,15 +35,15 @@ document.addEventListener("DOMContentLoaded", function() {
  * places two empty cardson the deck (just for space) and the played
  * randomly chooses if it is CPU or player and changes the background of the area
  * */ 
-function prepareGame(){
+function prepareGame() {
     var deck = ["1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K"]
     distributeCardsAll(deck)
     var points = "0"
     document.getElementById("points").innerHTML = points
     document.getElementById("deck").innerHTML = " "
     document.getElementById("played").innerHTML = " "
-    var pl = choosePlayer()
-    console.log(pl)
+    choosePlayer()
+    playerColor()
 }
 
 
@@ -76,15 +76,26 @@ function distributeCardsAll (deck) {
 }
 /**Generate a random number
  * if it is > 0,5 assign the CPU as first player
- * returns the PLayer (CPU or P1)
+ * returns the Player (CPU or P1)
  */
 function choosePlayer(){
     let num = Math.floor(Math.random()*2)
-    console.log(num)
     if (num === 0 ) {
         pl = "CPU"
     } else {
         pl = "P1"
     }
     return pl
+}
+
+/**Makes the actual player color background different
+ * takes the player (pl) and changes the background to a lighter one
+ */
+function playerColor() {
+    console.log(pl)
+    if (pl =="CPU") {
+        document.getElementById("opponentTitle").style.backgroundColor="yellow"
+    } else {
+        document.getElementById("playerTitle").style.backgroundColor="yellow"
+    }
 }
