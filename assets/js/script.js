@@ -28,6 +28,13 @@ document.addEventListener("DOMContentLoaded", function() {
         button.addEventListener("click", function() {
         });
     }
+    //global variables declaration
+    let deck //array of cards (deck)
+    let pl  //player (CPU or P1)
+    let totalPoints = 0 //total points
+    let points = 0 //points according the rules for the chosen card
+    let chosenCard //chosen and played card
+    let endGame = false //boolean for the end of the game
     prepareGame()
     mainGame()
 });
@@ -39,20 +46,19 @@ document.addEventListener("DOMContentLoaded", function() {
  * randomly chooses if it is CPU or player and changes the background of the area
  */ 
 function prepareGame() {
-    var deck = ["1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K"];
-    distributeCardsAll(deck)
-    var points = "0";
-    document.getElementById("points").innerHTML = points;
+    deck = ["1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K"];
+    distributeCardsAll()
+    totalPoints = "0";
+    document.getElementById("points").innerHTML = totalPoints;
     document.getElementById("deck").innerHTML = " ";
     document.getElementById("played").innerHTML = " ";
     choosePlayer()
     playerColor()
 }
 
-
 /** takes three random cards and distribute to CPU and Player
 */
-function distributeCardsAll (deck) {
+function distributeCardsAll () {
     //cycle through the 3 CPU cards and:
         for (let i = 1; i < 4; i++) {
             // Creates a random numbers between 1 and the deck total cards
@@ -87,7 +93,6 @@ function choosePlayer(){
     } else {
         pl = "P1";
     }
-    return pl;
 }
 
 /**Makes the actual player color background different
@@ -102,42 +107,155 @@ function playerColor() {
 }
 
 /**Main Game Routine
- * Checks who is playng and moves to the right routine
+ * Checks who is playing and moves to the right routine
  * adds the points to the total according the rules
  * moves the card on the last played pile
- * check the points total if it is 99+
+ * check the points total if it is 99+ or if there are no more cards in the deck
  * if yes: display message, update counters, ask for a new game
  * if no: takes a new card from the deck (checking if there are cards available)
- * changes player
- */
+ * changes player and start again with the new player
+*/
+
 function mainGame() {
     if (pl =="CPU") {
-        cpuGame()
+        cpuGame();
     } else {
-        playerGame()
+        playerGame();
     }
+    getPoints()
+    moveChosenCard()
+    calculateTotalPoints()
+    checkEndGame()
+    if (endGame === false) {
+        drawCard()
+        changePlayer()
+    } else {
+
+    }
+    changePlayer()
 }
 
 
 
 /**Game Routine for the CPU
- * waits 5000 milliseconds ("thinking")
+ * waits 5000 milliseconds "thinking")
  * takes a random card from the 3 available
+ * and eliminates it
  */
 function cpuGame() {
     setTimeout(function() {
         document.getElementById("opponentTitle").innerHTML = "CPU PLAYER      ......I'm Thinking.......";
-        let num = Math.floor(Math.random()*3) + 1;
-        var chosenCard = document.getElementById("opponentCard"+ num).innerHTML;
-        console.log(chosenCard);
-        return chosenCard
-      }, 1000);
+     }, 1000);
+    let num = Math.floor(Math.random()*3) + 1;
+    chosenCard = document.getElementById("opponentCard"+ num).innerHTML;
+    document.getElementById("opponentCard" + num).innerHTML = " "
+    setTimeout(function() {
+        document.getElementById("opponentTitle").innerHTML = "CPU PLAYER";
+     }, 4000);
 }
 
 
 /**Game routine for the player P1
  * takes the card chosen (button click)
+ * and eliminates it
  */
 function playerGame() {
 
+}
+
+/**Calculates the points according to the rules of the game */
+function getPoints () {
+    switch (chosenCard) {
+        case "1" : 
+            points = 1;
+            break;
+        case "2" :
+            points = 2;
+            break;
+        case "3" :
+            points = 3;
+            break;
+        case "4" :
+            points = 4;
+            break;
+        case "5" :
+            points = 5;
+            break;
+        case "6" :
+            points = 6;
+            break;
+        case "7" :
+            points = 7;
+            break;
+        case "8" :
+            points = 8;
+            break;
+        case "9" :
+            points = 9;
+            break;
+        case "10" :
+            points = -10;
+            break;
+        case "J" :
+            points = 0;
+            break;
+        case "Q" :
+            points = 0;
+            break;
+        case "K" :
+            points = 99;
+            break;
+    }
+}
+
+/**Updates the Last Played Card in the Game area */
+function moveChosenCard () {
+    document.getElementById("played").innerHTML = chosenCard
+}
+
+/**Calculates the Total Points
+ * If the played card is a K = 99 points, just makes the total as 99
+ * displays the total Points in the correct area
+ */
+function calculateTotalPoints() {
+    console.log(totalPoints)
+    console.log(points)
+    if (points == 99) {
+        totalPoints = 99
+    } else {
+        totalPoints = parseInt(points) + parseInt(totalPoints)
+    }
+    document.getElementById("points").innerHTML = totalPoints
+}
+
+/**Checks if the total points are 99+ or if the deck is empty */
+function checkEndGame () {
+    if (parseInt(totalPoints) > 99) {
+        endGame = true
+    } else {
+        endGame = false
+    }
+    console.log(deck.length)
+    if (deck.length = 0) {
+        endGame = true
+    } else {
+        endGame = false
+    }
+    console.log(endGame)
+}
+/**Changes the player, updates the background of the title and calls for a new mainGame routine */
+function changePlayer() {
+    if (pl === "CPU") {
+        pl = "P1"
+
+    } else {
+        pl = "CPU"
+    }
+    playerColor()
+    mainGame()
+}
+
+
+function drawCard() {
+    
 }
