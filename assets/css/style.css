@@ -7,6 +7,7 @@
   }
   
   .icon-bar a {
+
     float: left; /* Float links side by side */
     text-align: center; /* Center-align text */
     width: 20%; /* Equal width (5 icons with 20% width each = 100%) */
