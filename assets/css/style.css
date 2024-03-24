@@ -1,12 +1,36 @@
-.chewy-regular {
+/* Icon bar menu from W3schools*/
+
+.icon-bar {
+    width: 100%; /* Full-width */
+    background-color: #555; /* Dark-grey background */
+    overflow: auto; /* Overflow due to float */
+  }
+  
+  .icon-bar a {
+    float: left; /* Float links side by side */
+    text-align: center; /* Center-align text */
+    width: 20%; /* Equal width (5 icons with 20% width each = 100%) */
+    padding: 12px 0; /* Some top and bottom padding */
+    transition: all 0.3s ease; /* Add transition for hover effects */
+    color: white; /* White text color */
+    font-size: 36px; /* Increased font size */
+  }
+  
+  .icon-bar a:hover {
+    background-color: #000; /* Add a hover color */
+  }
+  
+  .active {
+    background-color: #04AA6D; /* Add an active/current color */
+  }
+  
+  1.chewy-regular {
     font-family: "Chewy", system-ui;
     font-weight: 400;
     font-style: normal;
   }
 
-header {
-    background-color: blue;
-}
+ /* general styles*/ 
 
 main {
     background-color:green;
@@ -18,7 +42,9 @@ footer {
 
 h1, h2 {
     text-align: center;
+    margin: 2rem;
 }
+
 .cards {
     display: flex;
     flex-direction: row;
@@ -31,7 +57,6 @@ h1, h2 {
     padding: 2rem;
     font-size: x-large;
 }
-
 
 .controls {
     display: flex;
