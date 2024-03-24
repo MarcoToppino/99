@@ -25,12 +25,12 @@ let totalPoints = 0; //total points
 let points = 0; //points according the rules for the chosen card
 let chosenCard; //chosen and played card
 let endGame = false; //boolean for the end of the game
-let won = 0
-let lost = 0
+let won = 0;
+let lost = 0;
 
 /**NORMAL SEQUENCE OF THE GAME */
-prepareGame()
-mainGame()
+prepareGame();
+mainGame();
 
 
 
@@ -46,20 +46,20 @@ function prepareGame() {
     let buttons = document.getElementsByTagName("button");
     for (let button of buttons) {
         //when button clicked, play the game passing the button id
-        button.addEventListener("click", mainGame, this.id)
+        button.addEventListener("click", mainGame, this.id);
     }
-    deck = []
+    deck = [];
     deck = ["1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K"];
-    distributeCardsAll()
-    points=0
-    totalPoints=0
+    distributeCardsAll();
+    points=0;
+    totalPoints=0;
     document.getElementById("points").innerHTML = "0";
     document.getElementById("deck").innerHTML = "D";
     document.getElementById("played").innerHTML = "P";
-    document.getElementById("won").innerHTML = "WON GAMES = " + won
-    document.getElementById("lost").innerHTML = "LOST GAMES = " + lost
-    choosePlayer()
-    playerColor()
+    document.getElementById("won").innerHTML = "WON GAMES = " + won;
+    document.getElementById("lost").innerHTML = "LOST GAMES = " + lost;
+    choosePlayer();
+    playerColor();
 }
 
 /** takes three random cards and distribute to CPU and Player
@@ -68,7 +68,7 @@ function distributeCardsAll () {
     //cycle through the 3 CPU cards and:
         for (let i = 1; i < 4; i++) {
             // Creates a random numbers between 0 and the deck total cards
-            let num = Math.floor(Math.random() * deck.length)
+            let num = Math.floor(Math.random() * deck.length);
             // takes the correspondent card
             let card = deck[num];
             //writes it in the CPU card
@@ -130,26 +130,26 @@ function mainGame() {
     if (pl =="CPU") {
         cpuGame();
     } else {
-        clicked = this.id
+        let clicked = this.id;
         playerGame(clicked);
     }
-    getPoints()
-    moveChosenCard()
-    calculateTotalPoints()
-    checkEndGame()
+    getPoints();
+    moveChosenCard();
+    calculateTotalPoints();
+    checkEndGame();
     if (endGame == false) {
-        drawCard()
-        changePlayer()
+        drawCard();
+        changePlayer();
     } else {
         //check the player to understand who lost, updae the counters
         if (pl === "CPU") {
-            alert("You Won the Game!")
-            won = parseInt(won)+1
+            alert("You Won the Game!");
+            won = parseInt(won)+1;
         } else {
-            alert("You lost the game!")
-            lost=parseInt(lost)+1
+            alert("You lost the game!");
+            lost=parseInt(lost)+1;
         }
-        prepareGame()
+        prepareGame();
     }
 }
 
@@ -163,7 +163,7 @@ function mainGame() {
 function cpuGame() {
     let num = Math.floor(Math.random()*3) + 1;
     chosenCard = document.getElementById("opponentCard"+ num).innerHTML;
-    document.getElementById("opponentCard" + num).innerHTML = " "
+    document.getElementById("opponentCard" + num).innerHTML = " ";
 }
 
 
@@ -173,9 +173,9 @@ function cpuGame() {
  * then gets back to the mainGame
  */
 function playerGame(clicked) {
-    let num = clicked.slice(-1)
-    chosenCard = document.getElementById("playerCard" + num).innerHTML
-    document.getElementById("playerCard" + num).innerHTML = " "
+    let num = clicked.slice(-1);
+    chosenCard = document.getElementById("playerCard" + num).innerHTML;
+    document.getElementById("playerCard" + num).innerHTML = " ";
 }
 
 /**Calculates the points according to the rules of the game */
@@ -225,7 +225,7 @@ function getPoints () {
 
 /**Updates the Last Played Card in the Game area */
 function moveChosenCard () {
-    document.getElementById("played").innerHTML = chosenCard
+    document.getElementById("played").innerHTML = chosenCard;
 }
 
 /**Calculates the Total Points
@@ -234,40 +234,40 @@ function moveChosenCard () {
  */
 function calculateTotalPoints() {
     if (points == 99) {
-        totalPoints = 99
+        totalPoints = 99;
     } else {
-        totalPoints = parseInt(points) + parseInt(totalPoints)
+        totalPoints = parseInt(points) + parseInt(totalPoints);
     }
-    document.getElementById("points").innerHTML = totalPoints
+    document.getElementById("points").innerHTML = totalPoints;
 }
 
 /**Checks if the total points are 99+ or if the deck is empty */
 function checkEndGame () {
-        let endGame1
-        let endGame2
+        let endGame1;
+        let endGame2;
     if (parseInt(totalPoints) > 99) {
-        endGame1 = true
+        endGame1 = true;
     } else {
-        endGame1 = false
+        endGame1 = false;
     }
     if (deck.length == 0) {
-        endGame2 = true
+        endGame2 = true;
     } else {
-        endGame2 = false
+        endGame2 = false;
     }
-    endGame = endGame1 || endGame2
+    endGame = endGame1 || endGame2;
     }
 
 /**Changes the player, updates the background of the title and calls for a new mainGame routine if player is CPU*/
 function changePlayer() {
     if (pl === "CPU") {
-        pl = "P1"
+        pl = "P1";
     } else {
-        pl = "CPU"
+        pl = "CPU";
     }
-    playerColor()
+    playerColor();
     if (pl ==="CPU") {
-        mainGame()
+        mainGame();
     }
 }
 
@@ -276,18 +276,18 @@ function changePlayer() {
  * takes it away from the deck
  */
 function drawCard() {
-    let cards
-    let card
+    let cards;
+    let card;
     //Checks wich player is playing
     if (pl==="CPU") {
-        cards = "opponentCard"
+        cards = "opponentCard";
     } else {
-        cards = "playerCard"
+        cards = "playerCard";
     }
     //finds the empty card
     for (let i = 1; i<4; i++) {
-        card = cards + i
-        let value = document.getElementById(card).innerHTML
+        card = cards + i;
+        let value = document.getElementById(card).innerHTML;
         if (value === " ") {
             // Creates a random numbers between 1 and the deck total cards
             let num = Math.floor(Math.random() * deck.length);
