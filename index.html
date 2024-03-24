@@ -44,9 +44,13 @@
             - cards covered "deck", empty when finished
             - last card played
             - Total of points from the played cards
-            - message "you win/you lose" visible at the end of the game (99+)
+            - headers for Deck, Last Played and Points
         -->
-        <h2 class="gameArea" id="message">You Win/Lose</h2>
+        <div class="titles">
+                <h3>DECK</h3>
+                <h3>PLAYED</h3>
+                <h3>POINTS</h3>
+        </div>
         <div class="cards">
                 <div class="gameArea" id="deck">D 1</div>
                 <div class="gameArea" id="played">G 1</div>
@@ -62,21 +66,22 @@
                 <div class="playerCards" id="playerCard3">P 3</div>
             </div>
             <div class="controls">
-                <button class="button" id="playerButton1">Play 1</button>
-                <button class="button" id="playerButton2">Play 2</button>
-                <button class="button" id="playerButton3">Play 3</button>
+                <button class="button" id="playerButton1">Play Card</button>
+                <button class="button" id="playerButton2">Play Card</button>
+                <button class="button" id="playerButton3">Play Card</button>
             </div>
         </div>
         <div class="counters">
             <!--matches won and matches lost-->
-            <div class="counter" id="win">WON GAMES=1</div>
-            <div class="counter" id="lost">LOST GAMES=1</div>
+            <div class="counter" id="won">WON GAMES = 1</div>
+            <div class="counter" id="lost">LOST GAMES = 1</div>
         </div>
     </main>
     <footer>
         <!--Rules of the game (value of the cards)-->
-        <p>Card Values</p>
-        <p>Rules of the game</p>
+        <p>Card Values: 1-9 = 1-9 points  /  10 = -10 points  /  J and Q = 0 points  /  K = make to 99 points</p>
+        <p>Rules of the game : play one of your cards and add the points.</p>
+        <p>If you go over 99, You have lost! But if CPU goes over 99.....You Win!</p>
     </footer>
     <!--Script Link-->
     <script src="assets/js/script.js"></script>

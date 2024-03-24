@@ -49,8 +49,10 @@ function prepareGame() {
     deck = ["1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K"];
     distributeCardsAll()
     document.getElementById("points").innerHTML = "0";
-    document.getElementById("deck").innerHTML = " ";
-    document.getElementById("played").innerHTML = " ";
+    document.getElementById("deck").innerHTML = "D";
+    document.getElementById("played").innerHTML = "P";
+    document.getElementById("won").innerHTML = "WON GAMES = 0"
+    document.getElementById("lost").innerHTML = "LOST GAMES = 0"
     choosePlayer()
     playerColor()
 }
@@ -158,8 +160,7 @@ function cpuGame() {
  * then gets back to the mainGame
  */
 function playerGame(clicked) {
-    let buttonID = clicked
-    let num = buttonID.slice(-1)
+    let num = clicked.slice(-1)
     chosenCard = document.getElementById("playerCard" + num).innerHTML
     document.getElementById("playerCard" + num).innerHTML = " "
 }
@@ -238,7 +239,6 @@ function checkEndGame () {
     }
     if (deck.length == 0) {
         endGame2 = true
-        alert("deck 0")
     } else {
         endGame2 = false
     }

@@ -34,22 +34,27 @@
  /* general styles*/ 
 
 main {
-    background-color:green;
+    background-color:#04AA6D;
 }
 
 footer {
-    background-color: red;
+    background-color: #555;
 }
 
 h1, h2 {
     text-align: center;
-    margin: 2rem;
+    margin: 1rem;
+}
+.titles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .cards {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .cards > div {
@@ -57,12 +62,14 @@ h1, h2 {
     border-radius: 5%;
     padding: 2rem;
     font-size: x-large;
+    width: 32px;
+    text-align: center;
 }
 
 .controls {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .controls > button {
@@ -78,6 +85,16 @@ h1, h2 {
     justify-content: space-evenly;
 }
 
-#message {
-    visibility: hidden;
+.counter {
+    font-size: medium;
+    padding: 1rem;
+    margin: 1rem;
+    border: solid 2px black;
+    border-radius: 5%;
+}
+
+
+footer {
+    padding: 0.5rem;
+    text-align: center;
 }
