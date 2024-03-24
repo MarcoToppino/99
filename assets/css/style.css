@@ -24,7 +24,8 @@
     background-color: #04AA6D; /* Add an active/current color */
   }
   
-  1.chewy-regular {
+  /*Google Fonts style */
+  .chewy-regular {
     font-family: "Chewy", system-ui;
     font-weight: 400;
     font-style: normal;
@@ -75,4 +76,8 @@ h1, h2 {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+}
+
+#message {
+    visibility: hidden;
 }
