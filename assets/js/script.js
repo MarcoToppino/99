@@ -18,41 +18,37 @@
  * 7. if player is CPU, wait time or add a interaction to start CPU play
  */
 
-/** Wait for the DOM to finish loading before running the game
- * Get the button elements and add event listeners to them
- * calls for preparing the game
-*/
-document.addEventListener("DOMContentLoaded", function() {
-    //global variables declaration
-    let deck //array of cards (deck)
-    let pl  //player (CPU or P1)
-    let totalPoints = 0 //total points
-    let points = 0 //points according the rules for the chosen card
-    let chosenCard //chosen and played card
-    let endGame = false //boolean for the end of the game
+/**global variables declaration*/
+let deck; //array of cards (deck)
+let pl;  //player (CPU or P1)
+let totalPoints = 0; //total points
+let points = 0; //points according the rules for the chosen card
+let chosenCard; //chosen and played card
+let endGame = false; //boolean for the end of the game
 
-    prepareGame()
+/**NORMAL SEQUENCE OF THE GAME */
+prepareGame()
+mainGame()
 
-    let buttons = document.getElementsByTagName("button");
-    for (let button of buttons) {
-        button.addEventListener("click", mainGame, this.id)
-        //when button clicked, play the game passing the button id
-    }
 
-    mainGame()
-});
 
-/** Prepare the game loading all cards in an array (4 full sets) as a deck
+
+/** Get the button elements and add event listeners to the buttons
+ * Prepare the game loading all cards in an array (4 full sets) as a deck
  * calls for taking out three random cards and distribute to player and CPU
  * resets the points
  * places two empty cardson the deck (just for space) and the played
  * randomly chooses if it is CPU or player and changes the background of the area
  */ 
 function prepareGame() {
+    let buttons = document.getElementsByTagName("button");
+    for (let button of buttons) {
+        //when button clicked, play the game passing the button id
+        button.addEventListener("click", mainGame, this.id)
+    }
     deck = ["1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K"];
     distributeCardsAll()
-    totalPoints = "0";
-    document.getElementById("points").innerHTML = totalPoints;
+    document.getElementById("points").innerHTML = "0";
     document.getElementById("deck").innerHTML = " ";
     document.getElementById("played").innerHTML = " ";
     choosePlayer()
@@ -64,8 +60,8 @@ function prepareGame() {
 function distributeCardsAll () {
     //cycle through the 3 CPU cards and:
         for (let i = 1; i < 4; i++) {
-            // Creates a random numbers between 1 and the deck total cards
-            let num = Math.floor(Math.random() * deck.length) + 1;
+            // Creates a random numbers between 0 and the deck total cards
+            let num = Math.floor(Math.random() * deck.length)
             // takes the correspondent card
             let card = deck[num];
             //writes it in the CPU card
@@ -76,7 +72,7 @@ function distributeCardsAll () {
     //cycle through the 3 Players cards and:
     for (let i = 1; i < 4; i++) {
         // Creates a random numbers between 1 and the deck total cards
-        let num = Math.floor(Math.random() * deck.length) + 1;
+        let num = Math.floor(Math.random() * deck.length);
         // takes the correspondent card
         let card = deck[num];
         //writes it in the Players card
@@ -93,8 +89,10 @@ function choosePlayer(){
     let num = Math.floor(Math.random()*2);
     if (num === 0 ) {
         pl = "CPU";
+        alert("CPU will play first!");
     } else {
         pl = "P1";
+        alert("Player ONE will play first!");
     }
 }
 
@@ -123,10 +121,8 @@ function playerColor() {
 
 function mainGame() {
     if (pl =="CPU") {
-        alert("CPU is playing now!")
         cpuGame();
     } else {
-        alert("Player One is playing now!")
         clicked = this.id
         playerGame(clicked);
     }
@@ -134,11 +130,8 @@ function mainGame() {
     moveChosenCard()
     calculateTotalPoints()
     checkEndGame()
-    alert("EndGame = " + endGame)
     if (endGame == false) {
-        alert("Draw new card")
         drawCard()
-        alert("Changing Player")
         changePlayer()
     } else {
         alert("Exit game")
@@ -148,20 +141,14 @@ function mainGame() {
 
 
 /**Game Routine for the CPU only
- * waits 5000 milliseconds "thinking")
+ * waits 3000 milliseconds "thinking")
  * takes a random card from the 3 available
  * and eliminates it
  */
 function cpuGame() {
-    setTimeout(function() {
-        document.getElementById("opponentTitle").innerHTML = "CPU PLAYER      ......I'm Thinking.......";
-     }, 1000);
     let num = Math.floor(Math.random()*3) + 1;
     chosenCard = document.getElementById("opponentCard"+ num).innerHTML;
     document.getElementById("opponentCard" + num).innerHTML = " "
-    setTimeout(function() {
-        document.getElementById("opponentTitle").innerHTML = "CPU PLAYER";
-     }, 4000);
 }
 
 
@@ -172,10 +159,8 @@ function cpuGame() {
  */
 function playerGame(clicked) {
     let buttonID = clicked
-    alert(buttonID)
     let num = buttonID.slice(-1)
     chosenCard = document.getElementById("playerCard" + num).innerHTML
-    alert(chosenCard)
     document.getElementById("playerCard" + num).innerHTML = " "
 }
 
@@ -244,33 +229,32 @@ function calculateTotalPoints() {
 
 /**Checks if the total points are 99+ or if the deck is empty */
 function checkEndGame () {
+        let endGame1
+        let endGame2
     if (parseInt(totalPoints) > 99) {
         endGame1 = true
-        alert("99+ Total Points "+ parseInt(totalPoints))
     } else {
         endGame1 = false
-        alert("99- Total Points "+ totalPoints)
     }
     if (deck.length == 0) {
         endGame2 = true
         alert("deck 0")
     } else {
         endGame2 = false
-        alert("deck ok "+ deck.length)
     }
     endGame = endGame1 || endGame2
     }
-/**Changes the player, updates the background of the title and calls for a new mainGame routine */
+/**Changes the player, updates the background of the title and calls for a new mainGame routine if player is CPU*/
 function changePlayer() {
-    alert("actual Player" + pl)
     if (pl === "CPU") {
         pl = "P1"
-        alert("new Player" + pl)
     } else {
         pl = "CPU"
-        alert("new Player" + pl)
     }
     playerColor()
+    if (pl ==="CPU") {
+        mainGame()
+    }
 }
 
 /**Draws a new random card from the deck
@@ -292,8 +276,7 @@ function drawCard() {
         let value = document.getElementById(card).innerHTML
         if (value === " ") {
             // Creates a random numbers between 1 and the deck total cards
-            let num = Math.floor(Math.random() * deck.length) + 1;
-            // takes the correspondent card
+            let num = Math.floor(Math.random() * deck.length);
             let newCard = deck[num];
             //writes it in the empty place
             document.getElementById(card).innerHTML = newCard;
