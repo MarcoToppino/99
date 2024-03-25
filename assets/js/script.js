@@ -60,6 +60,7 @@ function prepareGame() {
     document.getElementById("lost").innerHTML = "LOST = " + lost;
     choosePlayer();
     playerColor();
+    addPictures();
 }
 
 /** takes three random cards and distribute to CPU and Player
@@ -96,10 +97,8 @@ function choosePlayer(){
     let num = Math.floor(Math.random()*2);
     if (num === 0 ) {
         pl = "CPU";
-        alert("CPU will play first!");
     } else {
         pl = "P1";
-        alert("Player ONE will play first!");
     }
 }
 
@@ -156,11 +155,11 @@ function mainGame() {
 
 
 /**Game Routine for the CPU only
- * waits 3000 milliseconds "thinking")
  * takes a random card from the 3 available
  * and eliminates it
  */
 function cpuGame() {
+
     let num = Math.floor(Math.random()*3) + 1;
     chosenCard = document.getElementById("opponentCard"+ num).innerHTML;
     document.getElementById("opponentCard" + num).innerHTML = " ";
