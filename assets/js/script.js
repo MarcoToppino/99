@@ -7,13 +7,12 @@ let chosenCard; //chosen and played card
 let endGame = false; //boolean for the end of the game
 let won = 0;
 let lost = 0;
-let clicked
+let num = "1"
 
 prepareGame();
 
 /** Method to Prepare a new game
  * 
- * Add event Listeners to the nuttons
  * Prepare the game loading all cards in an array (4 full sets) as a deck
  * calls for taking out three random cards and distribute to player and CPU
  * resets the points
@@ -21,12 +20,6 @@ prepareGame();
  * randomly chooses if it is CPU or player and changes the background of the area
  */ 
 function prepareGame() {
-    let buttons = document.getElementsByTagName("button");
-    for (let button of buttons) {
-        button.addEventListener("click", function() {
-            clicked = this.getAttribute("id");
-            })
-    }
     deck = [];
     deck = ["1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K"];
     distributeCardsAll();
@@ -133,11 +126,26 @@ function cardImages() {
  * changes player and start again with the new player
 */
 
-function mainGame() {
+function mainGame(num) {
     if (pl =="CPU") {
-        cpuGame();
+        /**Game Routine for the CPU Player only
+        * 
+        * takes a random card (between 1 and 3)
+        * plays it
+        * and eliminates it
+        */
+        let rnd = Math.floor(Math.random()*3) + 1
+        chosenCard = document.getElementById("opponentCard" + rnd).innerHTML;
+        document.getElementById("opponentCard" + rnd).innerHTML = " ";
     } else {
-        playerGame();
+        /** Game routine for the player P1 only
+        * 
+        * takes the card chosen (button click)
+        * plays it
+        * and eliminates it
+        */
+        chosenCard = document.getElementById("playerCard" + num).innerHTML;
+        document.getElementById("playerCard" + num).innerHTML = " ";
     }
     getPoints();
     moveChosenCard();
@@ -147,7 +155,7 @@ function mainGame() {
         drawCard();
         changePlayer();
     } else {
-        //check the player to understand who lost, updae the counters
+        //check the player to understand who lost, update the counters
         if (pl === "CPU") {
             alert("You Won the Game!");
             won = parseInt(won)+1;
@@ -158,29 +166,7 @@ function mainGame() {
         prepareGame();
     }
 }
-/**Game Routine for the CPU Player only
- * 
- * takes a random card (between 1 and 3)
- * plays it
- * and eliminates it
- */
-function    cpuGame() {
-    let num = Math.floor(Math.random()*3) + 1
-    chosenCard = document.getElementById("opponentCard" + num).innerHTML;
-    document.getElementById("opponentCard" + num).innerHTML = " ";
-}
 
-/** Game routine for the player P1 only
- * 
- * takes the card chosen (button click)
- * plays it
- * and eliminates it
- */
-function playerGame() {
-    let num = clicked.slice(-1);
-    chosenCard = document.getElementById("playerCard" + num).innerHTML;
-    document.getElementById("playerCard" + num).innerHTML = " ";
-}
 
 /** Method to assign points from the chosen card
  * 
