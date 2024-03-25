@@ -125,7 +125,7 @@ footer {
     background-size: cover;
 }
 /* Prepares the player cards and the played card with the deck, so that everything is ready for the real cards later*/
-/*.playerCards {
+.playerCards {
     background-image: url("/assets/pictures/D.jpg");
     background-repeat: false;
     background-size: cover;
@@ -136,4 +136,3 @@ footer {
     background-repeat: false;
     background-size: cover;
 }
-*/

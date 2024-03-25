@@ -24,6 +24,7 @@ function prepareGame() {
     for (let button of buttons) {
         button.addEventListener("click", function() {
             clicked = this.id;
+            mainGame()
         })
     }
     deck = [];
@@ -91,15 +92,17 @@ function prepareGame() {
     * takes the card
     * defines the image path and name
     * applies the background image
+    * applies the style background-repeat: false;
+    * applies the style background-size: cover;
     */
     function cardImages() {
         let divs = document.getElementsByClassName("cardImage")
-        for (let div of divs) {
-            let num = div.innerHTML
-            alert(num)
-            let path = `url(/assets/pictures/${num}.jpg)`
-            alert(path)
-            div.style.backgroundImage=path
+        for (let i = 0; i < divs.length ; i++) {
+            let num = divs[i].innerHTML
+            let path = "url('/assets/pictures/" + num + ".jpg'"
+            divs[i].style.backgroundImage = path      
+            divs[i].style.backgroundRepeat = "false"     
+            divs[i].style.backgroundSize = "cover"      
         }
     }
 }
@@ -136,13 +139,8 @@ function mainGame() {
         * plays it
         * and eliminates it
         */
-
-        alert(clicked)
-        let num = splice(clicked, -1)
-
-        alert(num)
+        let num = clicked.slice(-1);
         chosenCard = document.getElementById("playerCard" + num).innerHTML;
-        alert(chosenCard)
         document.getElementById("playerCard" + num).innerHTML = " ";
     }
     getPoints();
