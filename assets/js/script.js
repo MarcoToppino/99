@@ -7,10 +7,10 @@ let chosenCard; //chosen and played card
 let endGame = false; //boolean for the end of the game
 let won = 0;
 let lost = 0;
-let num = "1"
+let num;
+let clicked
 
 prepareGame();
-
 /** Method to Prepare a new game
  * 
  * Prepare the game loading all cards in an array (4 full sets) as a deck
@@ -20,9 +20,14 @@ prepareGame();
  * randomly chooses if it is CPU or player and changes the background of the area
  */ 
 function prepareGame() {
+    let buttons = document.getElementsByTagName("button");
+    for (let button of buttons) {
+        button.addEventListener("click", function() {
+            clicked = this.id;
+        })
+    }
     deck = [];
     deck = ["1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K"];
-    distributeCardsAll();
     points = 0;
     totalPoints = 0;
     document.getElementById("points").innerHTML = "0";
@@ -30,91 +35,77 @@ function prepareGame() {
     document.getElementById("played").innerHTML = "D";
     document.getElementById("won").innerHTML = "WON = " + won;
     document.getElementById("lost").innerHTML = "LOST = " + lost;
-    choosePlayer();
-}
 
-/** Method to Distribute random cards to all players
- * 
- * takes three random cards and distribute to CPU and Player
-*/
-function distributeCardsAll () {
-    //cycle through the 3 CPU cards and:
+    distributeCardsAll();
+    /** Method to Distribute random cards to all players
+    * 
+    * takes three random cards and distribute to CPU and Player
+    */
+    function distributeCardsAll () {
+        //cycle through the 3 CPU cards and:
+            for (let i = 1; i < 4; i++) {
+                // Creates a random numbers between 0 and the deck total cards
+                let num = Math.floor(Math.random() * deck.length);
+                // takes the correspondent card
+                let card = deck[num];
+                //writes it in the CPU card
+                document.getElementById("opponentCard"+i).innerHTML = card;
+                // eliminates from the array
+                deck.splice(num,1);
+            }
+        //cycle through the 3 Players cards and:
         for (let i = 1; i < 4; i++) {
-            // Creates a random numbers between 0 and the deck total cards
+            // Creates a random numbers between 1 and the deck total cards
             let num = Math.floor(Math.random() * deck.length);
             // takes the correspondent card
             let card = deck[num];
-            //writes it in the CPU card
-            document.getElementById("opponentCard"+i).innerHTML = card;
+            //writes it in the Players card
+            document.getElementById("playerCard"+i).innerHTML = card;
             // eliminates from the array
             deck.splice(num,1);
         }
-    //cycle through the 3 Players cards and:
-    for (let i = 1; i < 4; i++) {
-        // Creates a random numbers between 1 and the deck total cards
-        let num = Math.floor(Math.random() * deck.length);
-        // takes the correspondent card
-        let card = deck[num];
-        //writes it in the Players card
-        document.getElementById("playerCard"+i).innerHTML = card;
-        // eliminates from the array
-        deck.splice(num,1);
     }
-}
-
-/** Method to randomly chose the starting player
- * 
- * Generate a random number between 0 and 1
- * if it is = 0 assign the CPU as first player
- * returns the Player (CPU or P1)
- */
-function choosePlayer() {
-    let num = Math.floor(Math.random()*2);
-    if (num === 0 ) {
-        pl = "CPU";
-        alert("CPU will Play First!")
-    } else {
-        pl = "P1";
-    }
-    playerColor();
-}
-
-/** Method to adjust the background of the active player Title
- * 
- * Makes the actual player color background different
- * takes the player (pl) and changes the background of the area Title
- */
-function playerColor() {
-    if (pl =="CPU") {
-        document.getElementById("opponentTitle").style.backgroundColor="yellow";
-        document.getElementById("playerTitle").style.backgroundColor="green";
-    } else {
-        document.getElementById("playerTitle").style.backgroundColor="yellow";
-        document.getElementById("opponentTitle").style.backgroundColor="green";
+    
+    choosePlayer();
+    /** Method to randomly chose the starting player
+    * 
+    * Generate a random number between 0 and 1
+    * if it is = 0 assign the CPU as first player
+    * returns the Player (CPU or P1)
+    */
+    function choosePlayer() {
+        let num = Math.floor(Math.random()*2);
+        if (num === 0 ) {
+            pl = "CPU";
+            alert("CPU will Play First!")
+        } else {
+            pl = "P1";
+        }
     }
     cardImages()
-}
-
-/** Card Images Method to show cards instead of the numbers in the divs
- * 
- * Takes the number in the div (only PLayed Card and Player Cards)
- * Loads the corrispondent image and sets it as background for the DIV
- * cycle on all divs with class="cardImage"
- * takes the card
- * defines the image path and name
- * applies the background image
- */
-function cardImages() {
-    let divs = document.getElementsByClassName("cardImage")
-    for (let div of divs) {
-        let num = div.innerHTML
-        let path = `url(/assets/pictures/${num}.jpg)`
-        div.style.backgroundImage=path
+    /** Card Images Method to show cards instead of the numbers in the divs
+    * 
+    * Takes the number in the div (only PLayed Card and Player Cards)
+    * Loads the corrispondent image and sets it as background for the DIV
+    * cycle on all divs with class="cardImage"
+    * takes the card
+    * defines the image path and name
+    * applies the background image
+    */
+    function cardImages() {
+        let divs = document.getElementsByClassName("cardImage")
+        for (let div of divs) {
+            let num = div.innerHTML
+            alert(num)
+            let path = `url(/assets/pictures/${num}.jpg)`
+            alert(path)
+            div.style.backgroundImage=path
+        }
     }
-    mainGame();
 }
 
 
+mainGame()
 /** Main Game Routine
  * 
  * Checks who is playing and moves to the right routine
@@ -126,7 +117,7 @@ function cardImages() {
  * changes player and start again with the new player
 */
 
-function mainGame(num) {
+function mainGame() {
     if (pl =="CPU") {
         /**Game Routine for the CPU Player only
         * 
@@ -140,11 +131,18 @@ function mainGame(num) {
     } else {
         /** Game routine for the player P1 only
         * 
-        * takes the card chosen (button click)
+        * 
+        * takes the card chosen (button clicked)
         * plays it
         * and eliminates it
         */
+
+        alert(clicked)
+        let num = splice(clicked, -1)
+
+        alert(num)
         chosenCard = document.getElementById("playerCard" + num).innerHTML;
+        alert(chosenCard)
         document.getElementById("playerCard" + num).innerHTML = " ";
     }
     getPoints();
@@ -269,7 +267,6 @@ function changePlayer() {
     } else {
         pl = "CPU";
     }
-    playerColor();
     if (pl ==="CPU") {
         mainGame();
     }
