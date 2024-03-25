@@ -65,8 +65,10 @@ h2 {
     border: solid 2px black;
     border-radius: 5%;
     padding: 1rem;
-    font-size: x-large;
+    font-size: 1px;
+    color: white;
     width: 32px;
+    height: 70px;
     text-align: center;
 }
 
@@ -101,4 +103,33 @@ h2 {
 footer {
     padding: 0.5rem;
     text-align: center;
+}
+
+.opponentCards {
+    background-image: url("/assets/pictures/D.jpg");
+    background-repeat: false;
+    background-size: cover;
+}
+
+#points{
+    font-size: xx-large;
+    color: black;
+}
+
+#deck {
+    background-image: url("/assets/pictures/D.jpg");
+    background-repeat: false;
+    background-size: cover;
+}
+/* Prepares th player cards and the played card with the deck, so that everything is ready for the real cards later*/
+.playerCards {
+    background-image: url("/assets/pictures/D.jpg");
+    background-repeat: false;
+    background-size: cover;
+}
+
+#played {
+    background-image: url("/assets/pictures/D.jpg");
+    background-repeat: false;
+    background-size: cover;
 }

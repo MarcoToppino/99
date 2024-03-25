@@ -55,12 +55,12 @@ function prepareGame() {
     totalPoints=0;
     document.getElementById("points").innerHTML = "0";
     document.getElementById("deck").innerHTML = "D";
-    document.getElementById("played").innerHTML = "P";
+    document.getElementById("played").innerHTML = "D";
     document.getElementById("won").innerHTML = "WON = " + won;
     document.getElementById("lost").innerHTML = "LOST = " + lost;
     choosePlayer();
     playerColor();
-    addPictures();
+    cardImages()
 }
 
 /** takes three random cards and distribute to CPU and Player
@@ -97,6 +97,7 @@ function choosePlayer(){
     let num = Math.floor(Math.random()*2);
     if (num === 0 ) {
         pl = "CPU";
+        alert("CPU will Play First!")
     } else {
         pl = "P1";
     }
@@ -114,6 +115,21 @@ function playerColor() {
         document.getElementById("opponentTitle").style.backgroundColor="green";
     }
 }
+
+/**Takes the number in the div (only PLayed Card and Player Cards)
+ * Loads the corrispondent image and sets it as background for the DIV
+ * cycle on all divs with class="cardImage"
+ * takes the card
+ * defines the image path and name
+ * applies the background image
+ */
+function cardImages() {
+    let divs = document.getElementsByClassName("cardImage")
+    for (let div OF divs) {
+        
+    }
+}
+
 
 /**Main Game Routine
  * Checks who is playing and moves to the right routine
