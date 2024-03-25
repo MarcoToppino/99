@@ -30,7 +30,7 @@ let lost = 0;
 
 /**NORMAL SEQUENCE OF THE GAME */
 prepareGame();
-mainGame();
+/mainGame();
 
 
 
@@ -116,7 +116,9 @@ function playerColor() {
     }
 }
 
-/**Takes the number in the div (only PLayed Card and Player Cards)
+/** Card Images Method to show cards
+ * 
+ * Takes the number in the div (only PLayed Card and Player Cards)
  * Loads the corrispondent image and sets it as background for the DIV
  * cycle on all divs with class="cardImage"
  * takes the card
@@ -125,7 +127,7 @@ function playerColor() {
  */
 function cardImages() {
     let divs = document.getElementsByClassName("cardImage")
-    for (let div OF divs) {
+    for (let div of divs) {
         
     }
 }
