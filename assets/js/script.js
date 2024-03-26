@@ -143,14 +143,109 @@ function mainGame() {
         chosenCard = document.getElementById("playerCard" + num).innerHTML;
         document.getElementById("playerCard" + num).innerHTML = " ";
     }
-    getPoints();
     moveChosenCard();
+    /** Method to move the card from the player to the gameArea
+    * 
+    * Updates the Last Played Card in the Game area
+    * including the picture 
+    */
+    function moveChosenCard () {
+        document.getElementById("played").innerHTML = chosenCard;
+        let path = "url('/assets/pictures/" + chosenCard + ".jpg'"
+        document.getElementById("played").style.backgroundImage = path      
+        document.getElementById("played").style.backgroundRepeat = "false"     
+        document.getElementById("played").style.backgroundSize = "cover"      
+    }    
+    getPoints();
+    /** Method to assign points from the chosen card
+    * 
+    * Calculates the points according to the rules of the game
+    */
+    function getPoints () {
+        switch (chosenCard) {
+            case "1" : 
+                points = 1;
+                break;
+            case "2" :
+                points = 2;
+                break;
+            case "3" :
+                points = 3;
+                break;
+            case "4" :
+                points = 4;
+                break;
+            case "5" :
+                points = 5;
+                break;
+            case "6" :
+                points = 6;
+                break;
+            case "7" :
+                points = 7;
+                break;
+            case "8" :
+                points = 8;
+                break;
+            case "9" :
+                points = 9;
+                break;
+            case "10" :
+                points = -10;
+                break;
+            case "J" :
+                points = 0;
+                break;
+            case "Q" :
+                points = 0;
+                break;
+            case "K" :
+                points = 99;
+                break;
+        }
+    }
     calculateTotalPoints();
+    /** Method to calulate the total points
+    * 
+    * Calculates the Total Points
+    * If the played card is a K = 99 points, just makes the total as 99
+    * displays the total Points in the correct area
+    */
+    function calculateTotalPoints() {
+        alert(points)
+        alert(totalPoints)
+        if (points === 99) {
+            totalPoints = 99;
+        } else {
+            totalPoints = Number(points) + Number(totalPoints);
+        }
+        alert(totalPoints)
+        document.getElementById("points").innerHTML = totalPoints;
+    }
     checkEndGame();
-    if (endGame == false) {
-        drawCard();
-        changePlayer();
-    } else {
+    /** Method to evaluate if the game is finished
+    * 
+    * Checks if the total points are 99+ or if the deck is empty
+    * If one of the two is true, exits the game
+    * If both are false, the continue the game
+    */
+    function checkEndGame () {
+        let endGame1;
+        let endGame2;
+        if (Number(totalPoints) > 99) {
+            endGame1 = true;
+        } else {
+            endGame1 = false;
+        }
+        if (deck.length === 0) {
+            endGame2 = true;
+        } else {
+            endGame2 = false;
+        }
+        endGame = endGame1 || endGame2;
+    }
+
+    if (endGame == true) {
         //check the player to understand who lost, update the counters
         if (pl === "CPU") {
             alert("You Won the Game!");
@@ -159,144 +254,61 @@ function mainGame() {
             alert("You lost the game!");
             lost=parseInt(lost)+1;
         }
+        // then starts a new game
+        points=0
+        totalPoints=0
         prepareGame();
-    }
-}
-
-
-/** Method to assign points from the chosen card
- * 
- * Calculates the points according to the rules of the game
- */
-function getPoints () {
-    switch (chosenCard) {
-        case "1" : 
-            points = 1;
-            break;
-        case "2" :
-            points = 2;
-            break;
-        case "3" :
-            points = 3;
-            break;
-        case "4" :
-            points = 4;
-            break;
-        case "5" :
-            points = 5;
-            break;
-        case "6" :
-            points = 6;
-            break;
-        case "7" :
-            points = 7;
-            break;
-        case "8" :
-            points = 8;
-            break;
-        case "9" :
-            points = 9;
-            break;
-        case "10" :
-            points = -10;
-            break;
-        case "J" :
-            points = 0;
-            break;
-        case "Q" :
-            points = 0;
-            break;
-        case "K" :
-            points = 99;
-            break;
-    }
-}
-
-/** Method to move the card from the player to the gameArea
- * 
- * Updates the Last Played Card in the Game area 
- */
-function moveChosenCard () {
-    document.getElementById("played").innerHTML = chosenCard;
-}
-
-/** Method to calulate the total points
- * 
- * Calculates the Total Points
- * If the played card is a K = 99 points, just makes the total as 99
- * displays the total Points in the correct area
- */
-function calculateTotalPoints() {
-    if (points == 99) {
-        totalPoints = 99;
     } else {
-        totalPoints = parseInt(points) + parseInt(totalPoints);
-    }
-    document.getElementById("points").innerHTML = totalPoints;
-}
-
-/** Method to evaluate if the game is finished
- * 
- * Checks if the total points are 99+ or if the deck is empty
- */
-function checkEndGame () {
-        let endGame1;
-        let endGame2;
-    if (parseInt(totalPoints) > 99) {
-        endGame1 = true;
-    } else {
-        endGame1 = false;
-    }
-    if (deck.length == 0) {
-        endGame2 = true;
-    } else {
-        endGame2 = false;
-    }
-    endGame = endGame1 || endGame2;
-    }
-
-/** Method to Change player
- * 
- * Changes the player, updates the background of the title and calls for a new mainGame routine if player is CPU
- */
-function changePlayer() {
-    if (pl === "CPU") {
-        pl = "P1";
-    } else {
-        pl = "CPU";
-    }
-    if (pl ==="CPU") {
-        mainGame();
-    }
-}
-
-/** Method to draw new cards
- * 
- * Draws a new random card from the deck
- * places it in the available (= empty) place (CPU or P1)
- * takes it away from the deck
- */
-function drawCard() {
-    let cards;
-    let card;
-    //Checks wich player is playing
-    if (pl==="CPU") {
-        cards = "opponentCard";
-    } else {
-        cards = "playerCard";
-    }
-    //finds the empty card
-    for (let i = 1; i<4; i++) {
-        card = cards + i;
-        let value = document.getElementById(card).innerHTML;
-        if (value === " ") {
-            // Creates a random numbers between 1 and the deck total cards
-            let num = Math.floor(Math.random() * deck.length);
-            let newCard = deck[num];
-            //writes it in the empty place
-            document.getElementById(card).innerHTML = newCard;
-            // eliminates from the array
-            deck.splice(num,1);
+        drawCard();
+        /** Method to draw new cards
+        * 
+        * Draws a new random card from the deck
+        * places it in the available (= empty) place (CPU or P1)
+        * updates the picture of the card (only for player cards)
+        * takes it away from the deck
+        */
+        function drawCard() {
+            let cards;
+            let card;
+            //Checks wich player is playing
+            if (pl==="CPU") {
+                cards = "opponentCard";
+            } else {
+                cards = "playerCard";
+            }
+            //finds the empty card
+            for (let i = 1; i<4; i++) {
+                card = cards + i;
+                let value = document.getElementById(card).innerHTML;
+                if (value === " ") {
+                    // Creates a random numbers between 1 and the deck total cards
+                    let num = Math.floor(Math.random() * deck.length);
+                    let newCard = deck[num];
+                    //writes it in the empty place and updates the picture (player only)
+                    document.getElementById(card).innerHTML = newCard;
+                    if (pl === "P1") {
+                        let path = "url('/assets/pictures/" + newCard + ".jpg'"
+                        document.getElementById(card).style.backgroundImage = path      
+                        document.getElementById(card).style.backgroundRepeat = "false"     
+                        document.getElementById(card).style.backgroundSize = "cover"      
+                    }
+                    // eliminates from the array
+                    deck.splice(num,1);
+                }
+            }
+        }
+        changePlayer()
+        /** Method to Change player
+        * 
+        * Changes the player and calls for a new mainGame routine if player is CPU
+        */
+        function changePlayer() {
+            if (pl === "CPU") {
+                pl = "P1";
+            } else {
+                pl = "CPU";
+                mainGame()
+            }
         }
     }
 }
