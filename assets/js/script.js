@@ -73,6 +73,7 @@ function playerGame() {
         if (endGame === true) {
             //Changes the text and color of the WIN and LOST counters according to the result
             lost = Number(lost) + 1;
+            alert("CPU PLAYER WINS THIS GAME !")
             document.getElementById("lost").style.backgroundColor = "yellow";
             document.getElementById("won").style.backgroundColor = "#04AA6D";
             
@@ -114,6 +115,7 @@ function cpuGame() {
         if (endGame === true) {
             //Changes the text and color of the WIN and LOST counters according to the result
             won = Number(won) + 1;
+            alert("PLAYER ONE WINS THIS GAME !")
             document.getElementById("won").style.backgroundColor = "yellow";
             document.getElementById("lost").style.backgroundColor = "#04AA6D";
             prepareGame()
