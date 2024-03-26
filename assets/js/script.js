@@ -28,7 +28,6 @@ function prepareGame() {
     deck = [];
     deck = ["1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K","1","2","3","4","5","6","7","8","9","10","J","Q","K"];
     document.getElementById("points").innerHTML = points;
-    document.getElementById("deck").innerHTML = "D";
     document.getElementById("played").innerHTML = "D";
     document.getElementById("won").innerHTML = "WON = " + won;
     document.getElementById("lost").innerHTML = "LOST = " + lost;
