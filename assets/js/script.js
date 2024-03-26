@@ -9,6 +9,7 @@ let won = 0;
 let lost = 0;
 let num;
 let clicked
+prepareButtons()
 
 prepareGame();
 /** Method to Prepare a new game
@@ -35,16 +36,9 @@ function prepareGame() {
     choosePlayer();
     distributeCardsAll();
     cardImages();
-    
-    /**Add buttonLs eventListeners */
-    let buttons = document.getElementsByTagName("button");
-    for (let button of buttons) {
-        button.addEventListener("click", function() {
-            clicked = this.id;
-            playerGame();
-        })
-    }
 }
+
+
 
 /** Player Game Routine
 * 
@@ -320,13 +314,27 @@ function checkEndGame () {
 
 /** Method to Change player
 * 
-* Changes the player
+* Changes the player and starts the next round (CPU only)
 */
 function changePlayer() {
     if (pl === "CPU") {
         pl = "P1";
     } else {
         pl = "CPU";
+        cpuGame()
     }
 }
 
+/**Prepare Buttons for a click
+* 
+* Add buttons eventListeners */
+function prepareButtons()  {  
+    let buttons = document.getElementsByTagName("button");
+    for (let button of buttons) {
+        button.addEventListener("click", function() {
+            clicked = this.id;
+            playerGame();
+        })
+    }
+}
+    
