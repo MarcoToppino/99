@@ -33,17 +33,20 @@ function prepareGame() {
     document.getElementById("won").innerHTML = "WON = " + won;
     document.getElementById("lost").innerHTML = "LOST = " + lost;
     
-    choosePlayer();
+
     distributeCardsAll();
     cardImages();
+    choosePlayer()
+    //forces P1
+    pl = "P1"
 }
-
 
 
 /** Player Game Routine
 * 
 * Game routine for the player P1 only
-* check the player, if it is P1 continues, if it is CPU, goes there
+* check the player, if it is P1 continue
+* resets the title and color
 * takes the card chosen (button clicked)
 * plays it
 * and eliminates it
@@ -58,6 +61,7 @@ function prepareGame() {
 
 function playerGame() {
     if (pl ==="P1") {
+
         let num = clicked.slice(-1);
         chosenCard = document.getElementById("playerCard" + num).innerHTML;
         document.getElementById("playerCard" + num).innerHTML = " ";
@@ -67,11 +71,15 @@ function playerGame() {
         drawCard()
         checkEndGame();
         if (endGame === true) {
-            alert("You lost the game!");
+            //Changes the text and color of the WIN and LOST counters according to the result
             lost = Number(lost) + 1;
+            document.getElementById("lost").style.backgroundColor = "yellow";
+            document.getElementById("won").style.backgroundColor = "#04AA6D";
+            
             prepareGame()
         } else {
-            changePlayer()
+            changePlayer();
+            cpuGame();
         }
     }
 }
@@ -79,7 +87,8 @@ function playerGame() {
 /** CPU Game Routine
 * 
 * Game routine for the CPU Player only
-* check the player, if it is CPU continues, if it is P1, goes there
+* check the player, if it is CPU continues
+* resets the title and color
 * takes a random card (between 1 and 3)
 * plays it
 * and eliminates it
@@ -93,6 +102,7 @@ function playerGame() {
 */
 function cpuGame() {
     if (pl ==="CPU") {
+
         let rnd = Math.floor(Math.random()*3) + 1
         chosenCard = document.getElementById("opponentCard" + rnd).innerHTML;
         document.getElementById("opponentCard" + rnd).innerHTML = " ";
@@ -102,8 +112,10 @@ function cpuGame() {
         drawCard()
         checkEndGame();
         if (endGame === true) {
-            alert("You won the game!");
+            //Changes the text and color of the WIN and LOST counters according to the result
             won = Number(won) + 1;
+            document.getElementById("won").style.backgroundColor = "yellow";
+            document.getElementById("lost").style.backgroundColor = "#04AA6D";
             prepareGame()
         } else {
             changePlayer()
@@ -321,7 +333,6 @@ function changePlayer() {
         pl = "P1";
     } else {
         pl = "CPU";
-        cpuGame()
     }
 }
 
