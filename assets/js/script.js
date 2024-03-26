@@ -7,9 +7,9 @@ let chosenCard; //chosen and played card
 let endGame = false; //boolean for the end of the game
 let won = 0;
 let lost = 0;
-let num;
-let clicked
-prepareButtons()
+let clicked;
+
+prepareButtons();
 
 prepareGame();
 /** Method to Prepare a new game
@@ -35,9 +35,9 @@ function prepareGame() {
 
     distributeCardsAll();
     cardImages();
-    choosePlayer()
+    choosePlayer();
     //forces P1
-    pl = "P1"
+    pl = "P1";
 }
 
 
@@ -67,16 +67,15 @@ function playerGame() {
         moveChosenCard();
         getPoints();
         calculateTotalPoints();
-        drawCard()
+        drawCard();
         checkEndGame();
         if (endGame === true) {
             //Changes the text and color of the WIN and LOST counters according to the result
             lost = Number(lost) + 1;
-            alert("CPU PLAYER WINS THIS GAME !")
+            alert("CPU PLAYER WINS THIS GAME !");
             document.getElementById("lost").style.backgroundColor = "yellow";
             document.getElementById("won").style.backgroundColor = "#04AA6D";
-            
-            prepareGame()
+            prepareGame();
         } else {
             changePlayer();
             cpuGame();
@@ -103,23 +102,23 @@ function playerGame() {
 function cpuGame() {
     if (pl ==="CPU") {
 
-        let rnd = Math.floor(Math.random()*3) + 1
+        let rnd = Math.floor(Math.random()*3) + 1;
         chosenCard = document.getElementById("opponentCard" + rnd).innerHTML;
         document.getElementById("opponentCard" + rnd).innerHTML = " ";
         moveChosenCard();
         getPoints();
         calculateTotalPoints();
-        drawCard()
+        drawCard();
         checkEndGame();
         if (endGame === true) {
             //Changes the text and color of the WIN and LOST counters according to the result
             won = Number(won) + 1;
-            alert("PLAYER ONE WINS THIS GAME !")
+            alert("PLAYER ONE WINS THIS GAME !");
             document.getElementById("won").style.backgroundColor = "yellow";
             document.getElementById("lost").style.backgroundColor = "#04AA6D";
-            prepareGame()
+            prepareGame();
         } else {
-            changePlayer()
+            changePlayer();
         }
     }
 }
@@ -180,13 +179,13 @@ function choosePlayer() {
     * applies the style background-size: cover;
     */
 function cardImages() {
-    let divs = document.getElementsByClassName("cardImage")
+    let divs = document.getElementsByClassName("cardImage");
     for (let i = 0; i < divs.length ; i++) {
-        let num = divs[i].innerHTML
-        let path = "url('/assets/pictures/" + num + ".jpg'"
-        divs[i].style.backgroundImage = path      
-        divs[i].style.backgroundRepeat = "false"     
-        divs[i].style.backgroundSize = "cover"      
+        let num = divs[i].innerHTML;
+        let path = "url('/assets/pictures/" + num + ".jpg'";
+        divs[i].style.backgroundImage = path;      
+        divs[i].style.backgroundRepeat = "false";     
+        divs[i].style.backgroundSize = "cover";      
     }
 }
 
@@ -197,10 +196,10 @@ function cardImages() {
 */
 function moveChosenCard () {
     document.getElementById("played").innerHTML = chosenCard;
-    let path = "url('/assets/pictures/" + chosenCard + ".jpg'"
-    document.getElementById("played").style.backgroundImage = path      
-    document.getElementById("played").style.backgroundRepeat = "false"     
-    document.getElementById("played").style.backgroundSize = "cover"      
+    let path = "url('/assets/pictures/" + chosenCard + ".jpg'";
+    document.getElementById("played").style.backgroundImage = path;      
+    document.getElementById("played").style.backgroundRepeat = "false";     
+    document.getElementById("played").style.backgroundSize = "cover";      
 }    
 
 /** Method to assign points from the chosen card
@@ -292,10 +291,10 @@ function drawCard() {
             //writes it in the empty place and updates the picture (player only)
             document.getElementById(card).innerHTML = newCard;
             if (pl === "P1") {
-                let path = "url('/assets/pictures/" + newCard + ".jpg'"
-                document.getElementById(card).style.backgroundImage = path      
-                document.getElementById(card).style.backgroundRepeat = "false"     
-                document.getElementById(card).style.backgroundSize = "cover"      
+                let path = "url('/assets/pictures/" + newCard + ".jpg'";
+                document.getElementById(card).style.backgroundImage = path;      
+                document.getElementById(card).style.backgroundRepeat = "false";     
+                document.getElementById(card).style.backgroundSize = "cover";      
             }
             // eliminates from the array
             deck.splice(num,1);
@@ -346,7 +345,7 @@ function prepareButtons()  {
         button.addEventListener("click", function() {
             clicked = this.id;
             playerGame();
-        })
+        });
     }
 }
     
