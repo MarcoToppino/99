@@ -177,6 +177,7 @@ function choosePlayer() {
     * applies the background image
     * applies the style background-repeat: false;
     * applies the style background-size: cover;
+    * Fr the opponents card loads only the deck image
     */
 function cardImages() {
     let divs = document.getElementsByClassName("cardImage");
@@ -186,6 +187,13 @@ function cardImages() {
         divs[i].style.backgroundImage = path;      
         divs[i].style.backgroundRepeat = "false";     
         divs[i].style.backgroundSize = "cover";      
+    }
+    let opps = document.getElementsByClassName("opponentCards");
+    for (let j = 0; j < opps.length ; j++) {
+        let path = "url('assets/pictures/D.jpg'";
+        opps[j].style.backgroundImage = path;      
+        opps[j].style.backgroundRepeat = "false";     
+        opps[j].style.backgroundSize = "cover";      
     }
 }
 

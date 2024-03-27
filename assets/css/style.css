@@ -107,11 +107,6 @@ footer {
     text-align: center;
     font-weight: bold;
 }
-.opponentCards {
-    background-image: url("../pictures/D.jpg");
-    background-repeat:no-repeat;
-    background-size: cover;
-}
 
 #points{
     font-size: xx-large;
