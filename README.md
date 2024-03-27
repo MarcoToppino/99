@@ -3,11 +3,16 @@
 ![99 CARD GAME mockup images](assets/readme-files/mockup-image.png)
 
 99 CARD game is a kids card game.
+
 The objective of the game is to make the opponent go over 99 point and lose the game.
+
 To do this the players deal one of their 3 assigned cards and add points to the already played deck, according to the game rules:
+
 1-9 cards have 1-9 poits, 10 is valued -10 (reduces the total by 10), J and Q have a zero value, while the K brings the total directly to 99.
 
-This website is created to have fun playing this game against the computer. The game is entirely based on chance for the CPU playing strategy, while the user can choose wich pcard to play and therefore apply his own strategy. The the website is extremely easy to navigate as it has a single page. Rules are permanently shown to allow great playability.
+This website is created to have fun playing this game against the computer. The game is entirely based on chance for the CPU playing strategy, while the user can choose wich pcard to play and therefore apply his own strategy. The the website is extremely easy to navigate as it 
+
+has a single page. Rules are permanently shown to allow great playability.
 
 Visit the deployed website [here](https://marcotoppino.github.io/99/).
 
@@ -52,13 +57,11 @@ Visit the deployed website [here](https://marcotoppino.github.io/99/).
 
 * The website provides a structure easy to understand and navigate.
 
-* Contains fun colors and interactivity to engage the player in the game play.
+* Contains easy to recognise colors and cards.
 
 * Responsive design to make the game accessible on different devices.
 
 * Incorporates a rules section that is easily accessible to the player.
-
-* A feedback section is provided to get comments from the player in order to further develop the website.
 
 ### User Stories
 
@@ -70,7 +73,7 @@ Visit the deployed website [here](https://marcotoppino.github.io/99/).
 
 * As a player, I want the game controls to be easy to access during the game.
 
-* As a player, I want to receive overall feedback during and after the game.
+* As a player, I want to receive overall feedback during  the game.
 
 * As a player, I want to be able to play the game on different devices.
 
@@ -78,25 +81,17 @@ Visit the deployed website [here](https://marcotoppino.github.io/99/).
 
 ![Color scheme image](assets/readme-files/color-scheme.png)
 
-The colors used in the site are white (#ffffff) for the navigation bar, slides background and some hover effects, a tone of orange (#bf834a) for closing buttons and buttons' hover effect, a tone of green (#789053) for the background and buttons, a blue color (#344b99) and a dark color (#151311) for the text.
+The colors used in the site are gray (#808080) for the navigation bar and the footer, green (#04AA6D) for the background, black (#000000) for the text and the hover effect of the menu, yellow for the hilight of the win/loose boxes. .
 
-The colors scheme is inspired on the game's main image. This way each color represents the 5 different weapons (rock, paper, scissors, lizard and Spock) used in the game.
+The colors scheme is mainly a reminder of the old solitaires games offered by windows in the 90's.
 
 ### Typography
 
-The main font used in the site is Nunito, as suggested by Google Fonts for appropriate pairings with Odibee Sans, with Sans Serif as the fallback font in case Nunito is not being imported correctly. Odibee Sans is used for the headings and the logo for the gaming design it provides with Cursive as fallback.
+The main font used in the site is Cewy, part of Google Fonts.
 
 ### Wireframes
 
-[Balsamiq](https://balsamiq.com/) has been used to showcase the appearance of the site and display the placement of the different elements whitin the pages.
-
-Page | Wireframe
---- | ---
-Home section | ![Home section wireframe image](assets/wireframes/home-section.png)
-Instructions section | ![Instructions wireframe image](assets/wireframes/instructions-section.png)
-Game section| ![Game section wireframe image](assets/wireframes/game-section.png)
-Feedback | ![Feedback wireframe image](assets/wireframes/feedback.png)
-Rules | ![Rules wireframe image](assets/wireframes/rules.png)
+No specif software has been used to wireframe the website. The page is extemely simple and has been only schetched on paper.
 
 [Back to top ⇧](#rpsls)
 
@@ -105,7 +100,7 @@ Rules | ![Rules wireframe image](assets/wireframes/rules.png)
 ### General
 
 * The website has been designed from a mobile first perspective.
-
+s
 * Responsive design across all device sizes.
 
 * **Header**
