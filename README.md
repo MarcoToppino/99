@@ -1,12 +1,15 @@
 # 99 CARD GAME
 
-![RPSLS mockup images](assets/readme-files/mockup-image.png)
+![99 CARD GAME mockup images](assets/readme-files/mockup-image.png)
 
-Rock Paper Scissors Lizard Spock (RPSLS) is an extension of the classic game of chance, Rock Paper Scissors, created by Sam Kass and Karen Bryla. This variant was mentioned in a 2005 article in *The Times* of London and was later the subject of an episode of the American sitcom *The Big Bang Theory* in 2008.
+99 CARD game is a kids card game.
+The objective of the game is to make the opponent go over 99 point and lose the game.
+To do this the players deal one of their 3 assigned cards and add points to the already played deck, according to the game rules:
+1-9 cards have 1-9 poits, 10 is valued -10 (reduces the total by 10), J and Q have a zero value, while the K brings the total directly to 99.
 
-This website is created to have fun playing this game against the computer. The game is entirely based on chance and the website is easy to navigate in order to easily find the rules, the game area and the feedback form in case the user wants to leave any comments.
+This website is created to have fun playing this game against the computer. The game is entirely based on chance for the CPU playing strategy, while the user can choose wich pcard to play and therefore apply his own strategy. The the website is extremely easy to navigate as it has a single page. Rules are permanently shown to allow great playability.
 
-Visit the deployed website [here](https://josswe26.github.io/rpsls/).
+Visit the deployed website [here](https://marcotoppino.github.io/99/).
 
 ## Table of Contents
 

@@ -108,7 +108,7 @@ footer {
     font-weight: bold;
 }
 .opponentCards {
-    background-image: url("assets/pictures/D.jpg");
+    background-image: url("../pictures/D.jpg");
     background-repeat:no-repeat;
     background-size: cover;
 }
