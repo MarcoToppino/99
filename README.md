@@ -1,4 +1,4 @@
-# RPSLS
+# 99 CARD GAME
 
 ![RPSLS mockup images](assets/readme-files/mockup-image.png)
 

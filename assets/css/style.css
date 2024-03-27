@@ -108,7 +108,7 @@ footer {
     font-weight: bold;
 }
 .opponentCards {
-    background-image: url("/assets/pictures/D.jpg");
+    background-image: url("assets/pictures/D.jpg");
     background-repeat:no-repeat;
     background-size: cover;
 }
@@ -122,13 +122,13 @@ footer {
 
 /* Prepares the player cards and the played card with the deck, so that everything is ready for the real cards later*/
 .playerCards {
-    background-image: url("/assets/pictures/D.jpg");
+    background-image: url("assets/pictures/D.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 #played {
-    background-image: url("/assets/pictures/D.jpg");
+    background-image: url("assets/pictures/D.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }

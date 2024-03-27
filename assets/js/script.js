@@ -182,7 +182,7 @@ function cardImages() {
     let divs = document.getElementsByClassName("cardImage");
     for (let i = 0; i < divs.length ; i++) {
         let num = divs[i].innerHTML;
-        let path = "url('/assets/pictures/" + num + ".jpg'";
+        let path = "url('assets/pictures/" + num + ".jpg'";
         divs[i].style.backgroundImage = path;      
         divs[i].style.backgroundRepeat = "false";     
         divs[i].style.backgroundSize = "cover";      
@@ -196,7 +196,7 @@ function cardImages() {
 */
 function moveChosenCard () {
     document.getElementById("played").innerHTML = chosenCard;
-    let path = "url('/assets/pictures/" + chosenCard + ".jpg'";
+    let path = "url('assets/pictures/" + chosenCard + ".jpg'";
     document.getElementById("played").style.backgroundImage = path;      
     document.getElementById("played").style.backgroundRepeat = "false";     
     document.getElementById("played").style.backgroundSize = "cover";      
@@ -291,7 +291,7 @@ function drawCard() {
             //writes it in the empty place and updates the picture (player only)
             document.getElementById(card).innerHTML = newCard;
             if (pl === "P1") {
-                let path = "url('/assets/pictures/" + newCard + ".jpg'";
+                let path = "url('assets/pictures/" + newCard + ".jpg'";
                 document.getElementById(card).style.backgroundImage = path;      
                 document.getElementById(card).style.backgroundRepeat = "false";     
                 document.getElementById(card).style.backgroundSize = "cover";      
