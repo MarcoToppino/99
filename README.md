@@ -26,11 +26,7 @@ Visit the deployed website [here](https://marcotoppino.github.io/99/).
     5. [Wireframes](#wireframes)
 2. [Features](#features)
     1. [General](#general)
-    2. [Home Section](#home-section)
-    3. [Instructions Section](#instructions-section)
-    4. [Game section](#game-section)
-    5. [Result Section](#result-section)
-    6. [404 Error Page](#404-error-page)
+    2. [Game section](#game-section)
 3. [Technologies Used](#technologies-used)
     1. [Languages Used](#languages-used)
     2. [Frameworks, Libraries and Programs Used](#frameworks-libraries-and-programs-used)
@@ -73,15 +69,15 @@ Visit the deployed website [here](https://marcotoppino.github.io/99/).
 
 * As a player, I want the game controls to be easy to access during the game.
 
-* As a player, I want to receive overall feedback during  the game.
+* As a player, I want to receive overall feedback during the game.
 
 * As a player, I want to be able to play the game on different devices.
 
 ### Color Scheme
 
-![Color scheme image](assets/readme-files/color-scheme.png)
+![Color scheme image](assets/readme-files/palette.png)
 
-The colors used in the site are gray (#808080) for the navigation bar and the footer, green (#04AA6D) for the background, black (#000000) for the text and the hover effect of the menu, yellow for the hilight of the win/loose boxes. .
+The colors used in the site are gray (#808080) for the navigation bar and the footer, green (#1BA96F) for the background, black (#000000) for the text and the hover effect of the menu, Yellow for the hilight of the win/loose boxes. .
 
 The colors scheme is mainly a reminder of the old solitaires games offered by windows in the 90's.
 
@@ -91,115 +87,52 @@ The main font used in the site is Cewy, part of Google Fonts.
 
 ### Wireframes
 
-No specif software has been used to wireframe the website. The page is extemely simple and has been only schetched on paper.
+No specific software has been used to wireframe the website. The page is extemely simple and has been only schetched on paper.
 
-[Back to top ⇧](#rpsls)
+[Back to top ⇧](#99-card-game)
 
 ## Features
 
 ### General
 
 * The website has been designed from a mobile first perspective.
-s
+
 * Responsive design across all device sizes.
 
 * **Header**
-![Header image](assets/readme-files/header.jpg)
 
-    - The header contains the main logo and a navigation bar positioned on top of the main content.
+![Header image](assets/readme-files/header.png)
 
-    - The navigation bar contains links to all sections to facilitate navigation across the site. It also has a hover effect that changes color to provide feedback to the player for a better user experience.
+ - The header contains a singla icon positioned on top of the main content.
 
-* **Carousel**
-
-![Carousel gif](assets/readme-files/carousel.gif)
-
-- A carousel design has been chosen to present the site content in order give more interactivity to the site and make it easy to navigate between the different sections.
+- The icon allows to easily restart the game. It also has a hover effect that changes color to provide feedback to the player for a better user experience.
 
 * **Footer**
-![Footer image](assets/readme-files/footer.jpg)
 
-    - The footer include links to the site's social media channels.
+![Footer image](assets/readme-files/footer.png)
 
-* **Background**
-    - A video background has been added to devices with screens 1024px wide and up to add some animation to large displays.
-
-* **Landscape Orientation Blocker**
-![Landscape image](assets/readme-files/landscape-blocker.png)
-
-    - When the player turns the device to landscape mode, the site show a full screen section to inform the user to use the site on portrait mode.
-
-### Home Section
-![Home section image](assets/readme-files/home-section.png)
-
-* **Main Image**
-    - The main image has been selected to represent the game in a fun way in order to engage the player.
-
-* **Main Buttons**
-    - The start game button work as a link to the game section.
-
-    - The feedback button open the feedback popup.
-
-* **Feedback Form Popup**
-
-![Feedback popup gif](assets/readme-files/feedback-popup.gif)
-
-- Provide the player a popup form accessible from the home section to be able to submit their feedback.
-
-### Instructions Section
-![Instructions section image](assets/readme-files/instructions-section.png)
-
-* The instructions section provides information to the player on how to play the game and present the weapons available in the game.
+- The footer include the rules of the game.
 
 ### Game section
-![Game section gif](assets/readme-files/game-section.gif)
+![Game section gif](assets/readme-files/game.png)
 
-* **Score Area**
-    - Keep track of the points obtained by the player and the computer and present the current score to the player.
+* **CPU Player Area**
+    - Shows the back of the three cards assigned to the CPU..
 
-* **Game Area**
-    - Display the weapons chosen by the player and the computer on each round.
+* **Played Area**
+    - Displays the last Card played by the CPU or PLAYER ONE.
 
-* **Game Feedback**
-    - Provide feedback regarding the result of the the last round to the player.
+* **Points Area**
+    - Shows the total points before the next move.
 
-* **Game Buttons**
-    - Allow the player to select the desired weapon to be used in the next round.
+* **Player One Area**
+    - Shows the three cards available for the player.
 
-* **Rules Button**
-    - Open the rules popup.
+* **Play Buttons**
+    - Deals the correspond card, chosen by the player.
 
-* **Rules Popup**
-
-![Rules popup gif](assets/readme-files/rules-popup.gif)
-
-- Provide the player a popup containing the game rules to make them easy accessible from the game section.
-
-### Result Section
-![Result section image](assets/readme-files/result-section.png)
-
-* The result section is an adaptable section that display the result of the game.
-
-* **Result Title**
-    - Displays the final score and if the player win or lose.
-
-* **GIF Image**
-    - Display a fun GIF that adapts depending on the game result.
-
-* **Section Buttons**
-    - The play again button close the result section to make the game available once again, clearing the last round.
-
-    - The main menu button work as a link to the home section.
-
-* **Section Background**
-    - The background display different color depending on the game result to provide better feedback to the player.
-
-### 404 Error Page
-![404 error page image](assets/readme-files/404-error-page.png)
-
-*  This single page is being shown in case the customer enters an incorrect address into the address bar. It contains a link to the home section.
-
-[Back to top ⇧](#rpsls)
+* **Results Area**
+    - Shows the total of games won and lost by the player. The last game result is highlighted in Yellow
 
 ## Technologies Used
 
@@ -211,19 +144,16 @@ s
 ### Frameworks, Libraries and Programs Used
 
 * [Google Fonts](https://fonts.google.com/)
-    - Google Fonts was used to import the fonts Nunito and Odibee Sans into the style.css file. These fonts were used throughout the site.
+    - Google Fonts was used to import the font Cewy into the style.css file. This font was used throughout the site.
 
 * [Font Awesome](https://fontawesome.com/)
-     - Font Awesome was used throughout all pages to add icons in order to create a better visual experience for UX purposes.
+     - Font Awesome was used  to add icons in order to create a better visual experience for UX purposes.
 
 * [GitPod](https://gitpod.io/)
      - GitPod was used for writing code, committing, and then pushing to GitHub.
 
 * [GitHub](https://github.com/)
      - GitHub was used to store the project after pushing.
-
-* [Balsamiq](https://balsamiq.com/)
-     - Balsamiq was used to create the wireframes during the design phase of the project.
 
 * [Am I Responsive?](http://ami.responsivedesign.is/#)
     - Am I Responsive was used in order to see responsive design throughout the process and to generate mockup imagery to be used.
@@ -246,7 +176,7 @@ s
 * [Favicon.cc](https://www.favicon.cc/) 
     - Favicon.cc was used to create the site favicon.
 
-[Back to top ⇧](#rpsls)
+[Back to top ⇧](#99-card-game)
 
 ## Testing
 
@@ -254,43 +184,33 @@ s
 
 * As a player, I want the game's website to be easy to navigate.
 
-    - A carousel design has been implemented to move across the different sections with ease.
+    - THe game runs on a single page, no need at all to navigate.
 
-    - The website offers an intuitive structure for the player to find easily the information or section they are looking for.
-
-    - The navigation bar is clearly presented to assist with the site's navigation.
+    - The only link provided, reloads the page to allow restarting completely the game.
 
 * As a player, I want the game to be fun and engaging.
 
-    - A fun main image has been selected to represent the game in a fun way.
+    - The game is simple but engaging. It empowers the player and need some calculation abilities to develop a good strategy against the CPU.
 
-    - The site's color design has been inspired on the main image in order to create a clear relation between each color used and the weapons available in the game.
+    - The CPU Player has never a fixed strategy, allowing many different lenghts of the game.
     
-    - The game area display the weapons chosen by both the player and the computer in their respective colors and icons.
-
-    - The score for the current round is being tracked and displayed on the top of the game section.
-
-    - Feedback area display the result for each round with a short explanation.
-
-    - The game result is provided in a fun way with adaptable colors and GIFs depending on the result.
+    - Feedback is given immediately after the move, changing accordingly the points and drawing new cards.
 
 * As a player, I want to have easy access to the game rules.
 
-    - A rules bottom is being provided directly on the game section.
-
-    - The rules open on a popup directly on the game section so the player does not need to leave the game.
+    - Rules are provided directly in the footer of the page, allowing immediate reference
 
 * As a player, I want the game controls to be easy to access during the game.
 
-    - All the game buttons are being provided on the bottom of the game section for easy access.
+    - The game contains only three buttons, directly under the cards to be played.
 
-* As a player, I want to receive overall feedback during and after the game.
+* As a player, I want to receive overall feedback during the game.
 
-    - Score for the current round is always available on the top of the game section.
+    - Score for the current round is always visible in the Points section.
 
-    - The result for each round is being provided with a short explanation.
+    - A clear game result gets displayed at the end of each round (Alert) and the relevant counter is highlited in Yellow.
 
-    - A clear game result gets displayed after the game.
+    - THe counters for both won and lost games are always visible and updated after every round.
 
 * As a player, I want to be able to play the game on different devices.
 
@@ -300,9 +220,9 @@ s
 
 * The [W3C Markup Validator](https://validator.w3.org/) and [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) services were used to validate all pages of the project in order to ensure there were no syntax errors.
 
-    - W3C Markup Validator returned a series of warnings concerning a possible misuse of aria-label. I considered this aria labels are being used to make available the icons in the rules popup available for the visually impaired.
+    - W3C Markup Validator returned no warnings or errors.
 
-    -  W3C CSS Validator found no errors or warnings on my CSS.
+    - W3C CSS Validator found no errors or warnings on my CSS.
 
 * The [JSHints JavaScript Code Quality Tool](https://jshint.com/) was used validate the site's JavaScript code.
 
@@ -316,11 +236,7 @@ s
 
     - **index.html**
 
-    ![Lighthouse report for landing page image](assets/readme-files/lighthouse-report-index.png)
-
-    - **404.html**
-
-    ![Lighthouse report for treatmenst page image](assets/readme-files/lighthouse-report-404.png)
+    ![Lighthouse report for landing page image](assets/readme-files/lighthouse.png)
 
 ### Tools Testing
 
@@ -419,7 +335,7 @@ iPhone 7 | No appearance, responsiveness nor functionality issues. | Pass
     404 Error Page | Entering an incorrect address into the address bar bring the player to the 404 error page. | Pass
     Back to the Game Button | Hover effect work and link to home section when button is clicked work as expected. | Pass
 
-[Back to top ⇧](#rpsls)
+[Back to top ⇧](#99-card-game)
 
 ## Finished Product
 
@@ -435,7 +351,7 @@ Result Sections | ![Result section image](assets/readme-files/result-section.png
 Landscape Orientation Blocker | ![Landscape image](assets/readme-files/landscape-blocker.png)
 404 Error Page | ![404 error page image](assets/readme-files/404-error-page.png)
 
-[Back to top ⇧](#rpsls)
+[Back to top ⇧](#99-card-game)
 
 ## Deployment
 
@@ -457,7 +373,7 @@ Landscape Orientation Blocker | ![Landscape image](assets/readme-files/landscape
 
     5. The page will refresh automatically and generate a link to your website.
 
-[Back to top ⇧](#rpsls)
+[Back to top ⇧](#99-card-game)
 
 ## Credits
 
@@ -483,7 +399,7 @@ Landscape Orientation Blocker | ![Landscape image](assets/readme-files/landscape
 
 * The code to apply the full screen background was found at [CSS-Tricks](https://css-tricks.com/full-page-background-video-styles/).
 
-[Back to top ⇧](#rpsls)
+[Back to top ⇧](#99-card-game)
 
 ## Acknowledgements
 
@@ -497,4 +413,4 @@ Landscape Orientation Blocker | ![Landscape image](assets/readme-files/landscape
 
 * Code Institute and its amazing Slack community for their support and providing me with the necessary knowledge to complete this project.
 
-[Back to top ⇧](#rpsls)
+[Back to top ⇧](#99-card-game)
